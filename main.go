@@ -2,35 +2,29 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
+	"time"
 
-	"github.com/gagliardetto/solana-go"
+	"github.com/elhdsalim/pumpfun-indexer/config"
+	"github.com/elhdsalim/pumpfun-indexer/indexer"
 	"github.com/gagliardetto/solana-go/rpc"
 )
 
 func main() {
 
-	RPC := "RPC/"
-	PUMPFUN_PROGRAM_ID := "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
-	TX_LIMIT := 10
-	client := rpc.New(RPC)
+	cfg := config.LoadConfig()
+	client := rpc.New(cfg.RPC[0])
 
-	address := solana.MustPublicKeyFromBase58(PUMPFUN_PROGRAM_ID)
-
-	sigs, err := client.GetSignaturesForAddressWithOpts(
-		context.Background(),
-		address,
-		&rpc.GetSignaturesForAddressOpts{
-			Limit: &TX_LIMIT,
-		},
-	)
-
+	slot, err := client.GetSlot(context.Background(), rpc.CommitmentFinalized)
 	if err != nil {
-		fmt.Println("error", err)
+		fmt.Println(err)
 	}
 
-	data, _ := json.MarshalIndent(sigs, "", "   ")
-	fmt.Println(string(data))
+	oneMonthAgoSlot, err := indexer.GetDateSlot(context.Background(), client, time.Now().AddDate(0, -1, 0))
+	if err != nil {
+		fmt.Println(err)
+	}
 
+	fmt.Println(slot)
+	fmt.Println(oneMonthAgoSlot)
 }
