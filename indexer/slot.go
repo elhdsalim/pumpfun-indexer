@@ -45,3 +45,18 @@ func GetDateSlot(ctx context.Context, client *rpc.Client, at time.Time) (uint64,
 	}
 	return uint64(closest), nil
 }
+
+func SplitSlotRange(start uint64, end uint64, count int) [][2]uint64 {
+	size := (end - start) / uint64(count)
+	shards := make([][2]uint64, count)
+
+	for i := range count {
+		shards[i][0] = start + uint64(i)*size
+		if i == count-1 {
+			shards[i][1] = end
+		} else {
+			shards[i][1] = start + uint64(i+1)*size
+		}
+	}
+	return shards
+}
