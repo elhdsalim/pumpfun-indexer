@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "tsx src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,9 @@
   "homepage": "https://github.com/elhdsalim/pumpfun-indexer#readme",
   "dependencies": {
     "solana-dex-parser": "^2.6.7"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }
