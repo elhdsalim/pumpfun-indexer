@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/elhdsalim/pumpfun-indexer#readme",
   "dependencies": {
+    "@clickhouse/client": "^1.18.1",
     "solana-dex-parser": "^2.6.7"
   },
   "devDependencies": {
