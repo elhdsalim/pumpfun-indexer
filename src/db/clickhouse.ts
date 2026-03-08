@@ -1,4 +1,4 @@
-import { config } from "./config";
+import { config } from "../config";
 import { createClient } from '@clickhouse/client'
 
 export const clickhouse = createClient({
