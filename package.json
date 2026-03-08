@@ -1,0 +1,24 @@
+{
+  "name": "pumpfun-indexer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elhdsalim/pumpfun-indexer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/elhdsalim/pumpfun-indexer/issues"
+  },
+  "homepage": "https://github.com/elhdsalim/pumpfun-indexer#readme",
+  "dependencies": {
+    "solana-dex-parser": "^2.6.7"
+  }
+}
